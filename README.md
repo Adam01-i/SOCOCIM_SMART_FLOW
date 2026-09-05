@@ -280,6 +280,22 @@ Ces services sont séparés de l'interface afin de pouvoir être remplacés ult�
 
 La carte utilise OpenStreetMap et ne nécessite aucune clé Google Maps ou API payante.
 
+## Cloner le projet
+
+Avec SSH :
+
+```bash
+git clone git@github.com:Adam01-i/SOCOCIM_SMART_FLOW.git
+cd SOCOCIM_SMART_FLOW
+```
+
+Ou avec HTTPS :
+
+```bash
+git clone https://github.com/Adam01-i/SOCOCIM_SMART_FLOW.git
+cd SOCOCIM_SMART_FLOW
+```
+
 ## Installation
 
 Depuis la racine du projet :
@@ -360,7 +376,7 @@ Les scénarios ne représentent pas une prédiction industrielle certifiée. Ils
 ## Structure du projet
 
 ```text
-SMART_SOCOCIM_FLOW/
+SOCOCIM_SMART_FLOW/
 ├── app.py
 ├── requirements.txt
 ├── README.md
