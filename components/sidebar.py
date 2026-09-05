@@ -1,5 +1,6 @@
 """Premium sidebar navigation for SOCOCIM SmartFlow."""
 from dash import html, dcc
+from utils.i18n import t
 
 NAV_SECTIONS = [
     {
@@ -40,11 +41,11 @@ ICONS = {
 }
 
 
-def sidebar(active_path: str = "/"):
+def sidebar(active_path: str = "/", language: str = "fr"):
     sections = []
     for section in NAV_SECTIONS:
         if section["title"]:
-            sections.append(html.Div(section["title"], className="sidebar-section-title"))
+            sections.append(html.Div(t(section["title"], language), className="sidebar-section-title"))
         links = []
         for label, path, icon in section["items"]:
             is_active = (active_path == path)
@@ -52,7 +53,7 @@ def sidebar(active_path: str = "/"):
                 dcc.Link(
                     [
                         html.Span(ICONS.get(icon, "•"), className="sidebar-icon"),
-                        html.Span(label, className="sidebar-label"),
+                        html.Span(t(label, language), className="sidebar-label"),
                     ],
                     href=path,
                     className="sidebar-link" + (" sidebar-link-active" if is_active else ""),
@@ -75,8 +76,8 @@ def sidebar(active_path: str = "/"):
                     html.Div(className="sidebar-footer-dot"),
                     html.Div(
                         [
-                            html.Div("Industrial Intelligence", className="sidebar-footer-title"),
-                            html.Div("Platform v0.1 — Alpha", className="sidebar-footer-sub"),
+                            html.Div(t("Industrial Intelligence", language), className="sidebar-footer-title"),
+                            html.Div(t("Platform v0.1 — Alpha", language), className="sidebar-footer-sub"),
                         ]
                     ),
                 ],

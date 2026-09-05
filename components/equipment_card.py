@@ -3,9 +3,10 @@ from dash import html
 from data.equipment import Equipment
 from utils.constants import STATUS_COLOR
 from components.status_badge import status_badge
+from utils.i18n import t
 
 
-def equipment_card(eq: Equipment, selected: bool = False):
+def equipment_card(eq: Equipment, selected: bool = False, language: str = "fr"):
     color = STATUS_COLOR.get(eq.status, "#5C6884")
     classes = "equipment-card" + (" equipment-card-selected" if selected else "")
     return html.Div(
@@ -16,10 +17,10 @@ def equipment_card(eq: Equipment, selected: bool = False):
                     html.Div(
                         [
                             html.Div(eq.name, className="equipment-card-name"),
-                            html.Div(eq.zone, className="equipment-card-zone"),
+                            html.Div(t(eq.zone, language), className="equipment-card-zone"),
                         ],
                     ),
-                    status_badge(eq.status),
+                    status_badge(eq.status, language=language),
                 ],
                 className="equipment-card-header",
             ),
@@ -27,17 +28,17 @@ def equipment_card(eq: Equipment, selected: bool = False):
                 [
                     html.Div(
                         [html.Span(f"{eq.health_score:.0f}%", className="equipment-metric-value"),
-                         html.Span("Health", className="equipment-metric-label")],
+                         html.Span(t("Health", language), className="equipment-metric-label")],
                         className="equipment-metric",
                     ),
                     html.Div(
                         [html.Span(f"{eq.temperature:.1f}°C", className="equipment-metric-value"),
-                         html.Span("Temp", className="equipment-metric-label")],
+                         html.Span(t("Temp", language), className="equipment-metric-label")],
                         className="equipment-metric",
                     ),
                     html.Div(
                         [html.Span(f"{eq.vibration:.1f}", className="equipment-metric-value"),
-                         html.Span("Vib mm/s", className="equipment-metric-label")],
+                         html.Span(t("Vib mm/s", language), className="equipment-metric-label")],
                         className="equipment-metric",
                     ),
                 ],
@@ -45,7 +46,7 @@ def equipment_card(eq: Equipment, selected: bool = False):
             ),
             html.Div(
                 html.Div(className="equipment-health-fill",
-                         style={"width": f"{eq.health_score}%", "backgroundColor": color}),
+                          style={"width": f"{eq.health_score}%", "backgroundColor": color}),
                 className="equipment-health-bar",
             ),
         ],

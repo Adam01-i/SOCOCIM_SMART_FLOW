@@ -3,15 +3,23 @@ from dash import html
 from data.vehicles import Vehicle
 from components.status_badge import vehicle_status_badge
 from utils.calculations import format_minutes
+from utils.constants import SITE_POINTS
+from utils.i18n import t
 
 
-def vehicle_table_row(v: Vehicle):
+def _location_label(v: Vehicle, language: str) -> str:
+    key = v.route[min(v.route_index, len(v.route) - 1)]
+    name = SITE_POINTS.get(key, {}).get("name", key)
+    return t(name, language)
+
+
+def vehicle_table_row(v: Vehicle, language: str = "fr"):
     return html.Tr(
         [
             html.Td(html.Span(v.id, className="mono-strong")),
             html.Td(v.plate, className="mono"),
-            html.Td(vehicle_status_badge(v.status)),
-            html.Td(v.route[min(v.route_index, len(v.route)-1)].replace("_", " ").title()),
+            html.Td(vehicle_status_badge(v.status, language=language)),
+            html.Td(_location_label(v, language)),
             html.Td(v.cargo),
             html.Td(format_minutes(v.waiting_time_min)),
             html.Td(f"{v.speed_kmh:.0f} km/h"),
@@ -24,7 +32,7 @@ def vehicle_table_row(v: Vehicle):
     )
 
 
-def queue_row(rank: int, v: Vehicle):
+def queue_row(rank: int, v: Vehicle, language: str = "fr"):
     urgency = "queue-row-urgent" if v.waiting_time_min > 15 else ""
     return html.Div(
         [

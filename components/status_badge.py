@@ -1,11 +1,13 @@
 """Reusable status / severity badge components."""
 from dash import html
 from utils.constants import STATUS_COLOR, SEVERITY_COLOR, VEHICLE_STATUS_COLOR, Colors
+from utils.i18n import t
 
 
-def status_badge(status, label: str = None):
+def status_badge(status, label: str = None, language: str = "fr"):
     color = STATUS_COLOR.get(status, Colors.TEXT_MUTED)
-    text = label or (status.value if hasattr(status, "value") else str(status))
+    raw = status.value if hasattr(status, "value") else str(status)
+    text = label if label is not None else t(raw, language)
     return html.Span(
         [html.Span(className="badge-dot", style={"backgroundColor": color}), text],
         className="status-badge",
@@ -13,9 +15,10 @@ def status_badge(status, label: str = None):
     )
 
 
-def severity_badge(severity, label: str = None):
+def severity_badge(severity, label: str = None, language: str = "fr"):
     color = SEVERITY_COLOR.get(severity, Colors.TEXT_MUTED)
-    text = label or (severity.value if hasattr(severity, "value") else str(severity))
+    raw = severity.value if hasattr(severity, "value") else str(severity)
+    text = label if label is not None else t(raw, language)
     return html.Span(
         text,
         className="severity-badge",
@@ -23,9 +26,10 @@ def severity_badge(severity, label: str = None):
     )
 
 
-def vehicle_status_badge(status, label: str = None):
+def vehicle_status_badge(status, label: str = None, language: str = "fr"):
     color = VEHICLE_STATUS_COLOR.get(status, Colors.TEXT_MUTED)
-    text = label or (status.value if hasattr(status, "value") else str(status)).replace("_", " ")
+    raw = status.value if hasattr(status, "value") else str(status)
+    text = label if label is not None else t(raw, language)
     return html.Span(
         text,
         className="status-badge",

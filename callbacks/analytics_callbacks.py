@@ -6,13 +6,14 @@ from dash import Input, Output
 from simulation.engine import ENGINE
 from components.charts import donut_chart, distribution_bar, stacked_area, multi_line_chart
 from utils.constants import Colors, EquipmentStatus, LOADING_BAYS
+from utils.i18n import t
 
 
 def register(app):
 
     @app.callback(Output("an-health-distribution", "figure"), Input("analytics-interval", "n_intervals"),
-                  Input("analytics-period", "value"))
-    def _health_distribution(_n, _period):
+                  Input("analytics-period", "value"), Input("language-store", "data"))
+    def _health_distribution(_n, _period, language):
         buckets = {"Excellent (90-100)": 0, "Healthy (75-89)": 0, "Warning (55-74)": 0, "Critical (0-54)": 0}
         for eq in ENGINE.equipment:
             h = eq.health_score
@@ -25,12 +26,12 @@ def register(app):
             else:
                 buckets["Critical (0-54)"] += 1
         colors = [Colors.SUCCESS, Colors.ACCENT, Colors.WARNING, Colors.CRITICAL]
-        return donut_chart(list(buckets.keys()), list(buckets.values()), colors,
-                            center_text=f"{len(ENGINE.equipment)}\nunits")
+        return donut_chart([t(label, language or "fr") for label in buckets], list(buckets.values()), colors,
+                    center_text=f"{len(ENGINE.equipment)}\n{t('units', language or 'fr')}")
 
     @app.callback(Output("an-anomalies-by-equipment", "figure"), Input("analytics-interval", "n_intervals"),
-                  Input("analytics-period", "value"))
-    def _anomalies_by_equipment(_n, _period):
+                  Input("analytics-period", "value"), Input("language-store", "data"))
+    def _anomalies_by_equipment(_n, _period, language):
         names, counts, colors = [], [], []
         for eq in ENGINE.equipment:
             anomaly_ticks = len([r for r in eq.risk_history if r >= 50])
@@ -43,8 +44,8 @@ def register(app):
         return distribution_bar(list(names), list(counts), list(colors), orientation="h", height=280)
 
     @app.callback(Output("an-maintenance-risk", "figure"), Input("analytics-interval", "n_intervals"),
-                  Input("analytics-period", "value"))
-    def _maintenance_risk(_n, _period):
+                  Input("analytics-period", "value"), Input("language-store", "data"))
+    def _maintenance_risk(_n, _period, language):
         ranked = ENGINE.maintenance.sorted_by_risk()
         names = [e.name for e in ranked]
         values = [e.risk_score for e in ranked]
@@ -52,21 +53,21 @@ def register(app):
         return distribution_bar(names, values, colors, orientation="h", height=280)
 
     @app.callback(Output("an-congestion-history", "figure"), Input("analytics-interval", "n_intervals"),
-                  Input("analytics-period", "value"))
-    def _congestion_history(_n, _period):
+                  Input("analytics-period", "value"), Input("language-store", "data"))
+    def _congestion_history(_n, _period, language):
         x = list(range(len(ENGINE.congestion_history)))
         series = [
-            {"x": x, "y": list(ENGINE.congestion_history), "name": "Congestion Index", "color": Colors.WARNING},
+            {"x": x, "y": list(ENGINE.congestion_history), "name": t("Congestion Index", language or "fr"), "color": Colors.WARNING},
         ]
         x2 = list(range(len(ENGINE.queue_length_history)))
-        series.append({"x": x2, "y": [q * 5 for q in ENGINE.queue_length_history], "name": "Queue Length (x5)", "color": Colors.ACCENT_BLUE})
-        return multi_line_chart(series, height=280, y_title="Index / scaled count")
+        series.append({"x": x2, "y": [q * 5 for q in ENGINE.queue_length_history], "name": t("Queue Length (x5)", language or "fr"), "color": Colors.ACCENT_BLUE})
+        return multi_line_chart(series, height=280, y_title=t("Index / scaled count", language or "fr"))
 
     @app.callback(Output("an-bay-utilization", "figure"), Input("analytics-interval", "n_intervals"),
-                  Input("analytics-period", "value"))
-    def _bay_utilization(_n, _period):
+                  Input("analytics-period", "value"), Input("language-store", "data"))
+    def _bay_utilization(_n, _period, language):
         occ = ENGINE.fleet_service.bay_occupancy
-        labels = [b.replace("_", " ").title() for b in LOADING_BAYS]
+        labels = [t(b.replace("_", " ").title(), language or "fr") for b in LOADING_BAYS]
         values = [1 if occ.get(b) not in (None,) else 0 for b in LOADING_BAYS]
         colors = [Colors.CRITICAL if v == 1 and occ.get(b) == "BLOCKED" else (Colors.ACCENT if v == 1 else Colors.OFFLINE)
                   for v, b in zip(values, LOADING_BAYS)]

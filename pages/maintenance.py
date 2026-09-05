@@ -1,17 +1,18 @@
 """Smart Maintenance — Equipment health & predictive monitoring."""
 from dash import html, dcc
 from components.navbar import topbar
+from utils.i18n import t
 
 
-def layout(engine):
+def layout(engine, language="fr"):
     return html.Div(
         [
-            topbar("Smart Maintenance", "Equipment health & predictive monitoring"),
+            topbar("Smart Maintenance", "Equipment health & predictive monitoring", language),
             html.Div(id="maintenance-kpi-grid", className="kpi-grid"),
 
             html.Div(
                 [
-                    html.Div("Equipment Fleet", className="section-label"),
+                    html.Div(t("Equipment Fleet", language), className="section-label"),
                     html.Div(id="maintenance-equipment-grid", className="equipment-grid"),
                 ],
                 className="panel",
@@ -27,7 +28,7 @@ def layout(engine):
                     ),
                     html.Div(
                         [
-                            html.Div([html.Div("Recommendation", className="panel-title")], className="panel-header"),
+                            html.Div([html.Div(t("Recommendation", language), className="panel-title")], className="panel-header"),
                             html.Div(id="maintenance-recommendation-panel"),
                         ],
                         className="panel",
@@ -40,14 +41,14 @@ def layout(engine):
                 [
                     html.Div(
                         [
-                            html.Div([html.Div("Temperature Trend (°C)", className="panel-title")], className="panel-header"),
+                            html.Div([html.Div(t("Temperature Trend (°C)", language), className="panel-title")], className="panel-header"),
                             dcc.Graph(id="maintenance-temp-chart", config={"displayModeBar": False}),
                         ],
                         className="panel",
                     ),
                     html.Div(
                         [
-                            html.Div([html.Div("Vibration Trend (mm/s)", className="panel-title")], className="panel-header"),
+                            html.Div([html.Div(t("Vibration Trend (mm/s)", language), className="panel-title")], className="panel-header"),
                             dcc.Graph(id="maintenance-vib-chart", config={"displayModeBar": False}),
                         ],
                         className="panel",
@@ -58,7 +59,7 @@ def layout(engine):
 
             html.Div(
                 [
-                    html.Div([html.Div("Health & Risk Evolution", className="panel-title")], className="panel-header"),
+                    html.Div([html.Div(t("Health & Risk Evolution", language), className="panel-title")], className="panel-header"),
                     dcc.Graph(id="maintenance-health-risk-chart", config={"displayModeBar": False}),
                 ],
                 className="panel",

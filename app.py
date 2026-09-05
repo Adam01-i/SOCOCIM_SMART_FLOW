@@ -31,12 +31,16 @@ app.layout = html.Div(
         dcc.Interval(id="global-tick-interval", interval=2000, n_intervals=0),
         dcc.Store(id="global-engine-tick", data=0),
 
+        dcc.Store(id="language-store", storage_type="local", data="fr"),
+        dcc.Store(id="theme-store", storage_type="local", data="dark"),
+
         html.Div(
             [
-                html.Div(id="sidebar-container", children=sidebar("/")),
+                html.Div(id="sidebar-container", children=sidebar("/", "fr")),
                 html.Div(html.Div(id="page-content"), className="main-content"),
             ],
-            className="app-shell",
+            id="app-shell",
+            className="app-shell theme-dark",
         ),
     ]
 )

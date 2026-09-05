@@ -1,12 +1,13 @@
 """Smart Logistics — Fleet monitoring & flow optimization."""
 from dash import html, dcc
 from components.navbar import topbar
+from utils.i18n import t
 
 
-def layout(engine):
+def layout(engine, language="fr"):
     return html.Div(
         [
-            topbar("Smart Logistics", "Fleet monitoring & flow optimization"),
+            topbar("Smart Logistics", "Fleet monitoring & flow optimization", language),
             html.Div(id="logistics-kpi-grid", className="kpi-grid"),
 
             html.Div(
@@ -15,8 +16,8 @@ def layout(engine):
                         [
                             html.Div(
                                 [
-                                    html.Div("Site Map — Live Fleet Position", className="panel-title"),
-                                    html.Span("OpenStreetMap", className="panel-tag"),
+                                    html.Div(t("Site Map — Live Fleet Position", language), className="panel-title"),
+                                    html.Span(t("OpenStreetMap", language), className="panel-tag"),
                                 ],
                                 className="panel-header",
                             ),
@@ -28,7 +29,7 @@ def layout(engine):
                         [
                             html.Div(
                                 [
-                                    html.Div("Queue Status", className="panel-title"),
+                                    html.Div(t("Queue Status", language), className="panel-title"),
                                     html.Div(id="logistics-congestion-tag"),
                                 ],
                                 className="panel-header",
@@ -45,11 +46,11 @@ def layout(engine):
 
             html.Div(
                 [
-                    html.Div([html.Div("Fleet Table", className="panel-title")], className="panel-header"),
+                    html.Div([html.Div(t("Fleet Table", language), className="panel-title")], className="panel-header"),
                     html.Div(
                         dcc.RadioItems(
                             id="fleet-filter",
-                            options=[{"label": v, "value": v} for v in ["All", "Waiting", "Loading", "Moving", "Critical"]],
+                            options=[{"label": t(v, language), "value": v} for v in ["All", "Waiting", "Loading", "Moving", "Critical"]],
                             value="All",
                             inline=True,
                             className="filter-chip-row",
@@ -60,8 +61,10 @@ def layout(engine):
                     html.Div(
                         html.Table(
                             [
-                                html.Thead(html.Tr([html.Th(h) for h in
-                                    ["Vehicle", "Plate", "Status", "Location", "Cargo", "Wait", "Speed", "Queue", "ETA"]])),
+                                html.Thead(html.Tr([
+                                    html.Th(t(h, language))
+                                    for h in ["Vehicle", "Plate", "Status", "Location", "Cargo", "Wait", "Speed", "Queue", "ETA"]
+                                ])),
                                 html.Tbody(id="fleet-table-body"),
                             ],
                             className="fleet-table",
