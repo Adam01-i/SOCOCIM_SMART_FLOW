@@ -87,11 +87,13 @@ La page **Smart Logistics** permet de :
 
 #### Captures d'écran
 
-- `logistics-fr.png` : carte du site, véhicules simulés et points logistiques ;
-- `logistics-queue-fr.png` : file d'attente, temps d'attente et indice de congestion ;
+- `logistics-fr.png` : carte du site, véhicules simulés, points logistiques, file d'attente, temps d'attente et indice de congestion;
+
+![logistics-fr.png](docs/screenshots/logistics-fr.png)
+
 - `logistics-table-fr.png` : tableau filtrable des véhicules et de leurs statuts.
 
-Ces captures doivent expliquer ce que l'opérateur observe : position des véhicules, état de la circulation, file à traiter et action recommandée.
+![logistics-table-fr.png](docs/screenshots/logistics-table-fr.png)
 
 ### Centre de contrôle
 
