@@ -39,6 +39,8 @@ La page **Overview** présente l'état global du site :
 #### Captures d'écran
 
 - `overview-fr.png` : vue principale en français, utilisée pour présenter l'état global du site dès l'ouverture ;
+![vue principale en français, utilisée pour présenter l'état global du site dès l'ouverture ;](docs/screenshots/overview-fr.png)
+
 - `overview-en.png` : même écran après bascule manuelle en anglais ;
 - `overview-live-feed-fr.png` : détail du flux d'opérations et des événements traduits.
 
@@ -202,7 +204,6 @@ Une capture doit toujours répondre à trois questions :
 Le français est la langue par défaut de l'application.
 
 - Le bouton de langue permet de basculer manuellement entre le français et l'anglais.
-- Le changement de page ne modifie jamais la langue sélectionnée.
 - La langue est conservée dans le stockage local du navigateur.
 - Le thème clair et le thème sombre sont également disponibles depuis le topbar.
 - Les titres, statuts, filtres, alertes, recommandations, événements et libellés dynamiques utilisent le catalogue i18n.
