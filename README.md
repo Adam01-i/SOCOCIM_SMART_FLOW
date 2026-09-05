@@ -39,12 +39,12 @@ La page **Overview** présente l'état global du site :
 #### Captures d'écran
 
 - `overview-fr.png` : vue principale en français, utilisée pour présenter l'état global du site dès l'ouverture ;
-![Vue d'ensemble de l'app](docs/screenshots/overview-fr.png)
+
+![Vue d'ensemble de l'app en Fr](docs/screenshots/overview-fr.png)
 
 - `overview-en.png` : même écran après bascule manuelle en anglais ;
-- `overview-live-feed-fr.png` : détail du flux d'opérations et des événements traduits.
 
-Les captures correspondantes seront placées dans [`docs/screenshots/`](docs/screenshots/). Elles doivent montrer la relation entre les KPI, le radar opérationnel et le flux d'événements.
+![Vue d'ensemble de l'app en En](docs/screenshots/overview-En.png)
 
 ### Smart Maintenance
 
@@ -58,15 +58,19 @@ La page **Smart Maintenance** permet de :
 - générer des recommandations selon les seuils métiers ;
 - déclencher des anomalies depuis le laboratoire de simulation.
 
-Les équipements sont représentés par des identifiants industriels simulés tels que `MOTOR-07`, `CRUSHER-01`, `CONVEYOR-02` ou `MIXER-03`.
-
 #### Captures d'écran
 
 - `maintenance-fr.png` : liste des équipements, statuts, scores de santé et mesures courantes ;
-- `maintenance-detail-fr.png` : vue détaillée d'un équipement sélectionné ;
-- `maintenance-anomaly-fr.png` : évolution visible après injection d'une anomalie et apparition de la recommandation.
 
-Chaque capture doit être accompagnée d'une courte description de l'action visible : surveillance, sélection, anomalie, évolution du score ou recommandation.
+![maintenance-fr.png](docs/screenshots/maintenance-fr.png)
+
+- `maintenance-detail-fr.png` : vue détaillée d'un équipement sélectionné : Motor-01 ;
+
+![maintenance-detail-fr.png](docs/screenshots/maintenance-detail-fr.png)
+
+- `maintenance-anomaly-fr.png` : évolution visible après injection d'une anomalie et apparition de la recommandation : Motor-01.
+
+![maintenance-anomaly-fr.png](docs/screenshots/maintenance-anomaly-fr.png)
 
 ### Smart Logistics
 
