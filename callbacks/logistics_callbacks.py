@@ -64,8 +64,8 @@ def register(app):
             kpi_card("Throughput / hour", str(ENGINE.logistics.throughput_last_hour_estimate()), icon_letter="⇄", accent=Colors.SUCCESS, language=language or "fr"),
         ]
 
-    @app.callback(Output("logistics-map-container", "children"), Input("logistics-interval", "n_intervals"), Input("language-store", "data"))
-    def _map(_n, language):
+    @app.callback(Output("logistics-map-container", "children"), Input("logistics-map-refresh", "n_clicks"), Input("language-store", "data"))
+    def _map(_refresh_clicks, language):
         return _build_map("logistics-map", language=language or "fr")
 
     @app.callback(Output("logistics-congestion-tag", "children"), Input("logistics-interval", "n_intervals"), Input("language-store", "data"))

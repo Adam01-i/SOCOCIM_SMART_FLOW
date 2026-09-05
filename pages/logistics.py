@@ -35,6 +35,12 @@ def layout(engine, language="fr"):
                                             "data-exit-label": t("Quitter le plein écran", language),
                                         },
                                     ),
+                                    html.Button(
+                                        t("Actualiser la carte", language),
+                                        id="logistics-map-refresh",
+                                        className="map-refresh-btn",
+                                        title=t("Actualiser les positions des véhicules", language),
+                                    ),
                                 ],
                                 id="logistics-map-frame",
                                 className="map-frame",

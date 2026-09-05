@@ -27,8 +27,8 @@ def register(app):
             kpi_card("Critical Alerts", str(critical_alerts), icon_letter="◉", accent=Colors.CRITICAL, language=language or "fr"),
         ]
 
-    @app.callback(Output("cc-map-container", "children"), Input("cc-interval", "n_intervals"), Input("language-store", "data"))
-    def _map(_n, language):
+    @app.callback(Output("cc-map-container", "children"), Input("cc-map-refresh", "n_clicks"), Input("language-store", "data"))
+    def _map(_refresh_clicks, language):
         return _build_map("cc-map", height="380px", language=language or "fr")
 
     @app.callback(Output("cc-critical-equipment", "children"), Input("cc-interval", "n_intervals"), Input("language-store", "data"))
