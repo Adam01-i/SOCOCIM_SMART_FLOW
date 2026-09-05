@@ -20,7 +20,24 @@ def layout(engine, language="fr"):
                     html.Div(
                         [
                             html.Div([html.Div(t("Site Map", language), className="panel-title")], className="panel-header"),
-                            html.Div(id="cc-map-container", className="map-container"),
+                            html.Div(
+                                [
+                                    html.Div(id="cc-map-container", className="map-container"),
+                                    html.Button(
+                                        t("Plein écran", language),
+                                        id="cc-map-fullscreen",
+                                        className="map-fullscreen-btn",
+                                        title=t("Afficher la carte en plein écran", language),
+                                        **{
+                                            "data-target": "cc-map-frame",
+                                            "data-enter-label": t("Plein écran", language),
+                                            "data-exit-label": t("Quitter le plein écran", language),
+                                        },
+                                    ),
+                                ],
+                                id="cc-map-frame",
+                                className="map-frame",
+                            ),
                         ],
                         className="panel",
                     ),

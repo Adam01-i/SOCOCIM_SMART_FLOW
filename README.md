@@ -84,6 +84,7 @@ La page **Smart Logistics** permet de :
 - filtrer la flotte ;
 - suivre le débit et l'utilisation des baies ;
 - générer des recommandations logistiques.
+- ouvrir la carte en plein écran pour mieux examiner le site et les véhicules.
 
 #### Captures d'écran
 
@@ -95,6 +96,10 @@ La page **Smart Logistics** permet de :
 
 ![logistics-table-fr.png](docs/screenshots/logistics-table-fr.png)
 
+- `carte-en-plein-ecran-fr.png` : Affichage de la carte en mode plein ecran
+
+![carte-en-plein-ecran-fr.png](docs/screenshots/carte-en-plein-ecran-fr.png)
+
 ### Centre de contrôle
 
 Le **Control Center** regroupe les informations importantes pour une supervision rapide :
@@ -105,6 +110,8 @@ Le **Control Center** regroupe les informations importantes pour une supervision
 - congestion ;
 - alertes et recommandations ;
 - événements opérationnels.
+
+La carte du centre de contrôle dispose également d'un bouton **Plein écran** pour agrandir la vue pendant une démonstration.
 
 #### Captures d'écran
 

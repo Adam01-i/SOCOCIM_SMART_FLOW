@@ -21,7 +21,24 @@ def layout(engine, language="fr"):
                                 ],
                                 className="panel-header",
                             ),
-                            html.Div(id="logistics-map-container", className="map-container"),
+                            html.Div(
+                                [
+                                    html.Div(id="logistics-map-container", className="map-container"),
+                                    html.Button(
+                                        t("Plein écran", language),
+                                        id="logistics-map-fullscreen",
+                                        className="map-fullscreen-btn",
+                                        title=t("Afficher la carte en plein écran", language),
+                                        **{
+                                            "data-target": "logistics-map-frame",
+                                            "data-enter-label": t("Plein écran", language),
+                                            "data-exit-label": t("Quitter le plein écran", language),
+                                        },
+                                    ),
+                                ],
+                                id="logistics-map-frame",
+                                className="map-frame",
+                            ),
                         ],
                         className="panel",
                     ),
