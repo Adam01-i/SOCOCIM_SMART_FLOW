@@ -39,7 +39,7 @@ La page **Overview** présente l'état global du site :
 #### Captures d'écran
 
 - `overview-fr.png` : vue principale en français, utilisée pour présenter l'état global du site dès l'ouverture ;
-![vue principale en français, utilisée pour présenter l'état global du site dès l'ouverture ;](docs/screenshots/overview-fr.png)
+![Vue d'ensemble de l'app](docs/screenshots/overview-fr.png)
 
 - `overview-en.png` : même écran après bascule manuelle en anglais ;
 - `overview-live-feed-fr.png` : détail du flux d'opérations et des événements traduits.
