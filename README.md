@@ -109,9 +109,13 @@ Le **Control Center** regroupe les informations importantes pour une supervision
 #### Captures d'écran
 
 - `control-center-fr.png` : écran consolidé de supervision ;
+
+![control-center-fr.png](docs/screenshots/control-center-fr.png)
+
 - `control-center-critical-fr.png` : équipements critiques, congestion et recommandations actives.
 
-Cette section doit illustrer la décision opérationnelle : identifier rapidement le problème, sa gravité et la réponse proposée par SmartFlow.
+![control-center-critical-fr.png](docs/screenshots/control-center-critical-fr.png)
+
 
 ### Centre des alertes
 
@@ -128,9 +132,12 @@ Les alertes sont conservées en mémoire pendant l'exécution de l'application.
 #### Captures d'écran
 
 - `alerts-fr.png` : liste des alertes avec filtres de gravité et de source ;
+
+![alerts-fr.png](docs/screenshots/alerts-fr.png)
+
 - `alerts-action-fr.png` : détail d'une alerte avec les actions d'acquittement et de résolution.
 
-La description de chaque capture doit préciser la source, la sévérité, le statut et la recommandation affichés.
+![alerts-action-fr.png](docs/screenshots/alerts-action-fr.png)
 
 ### Analytique
 
@@ -145,10 +152,9 @@ La page **Analytics** présente notamment :
 
 #### Captures d'écran
 
-- `analytics-fr.png` : distribution de santé et risques de maintenance ;
-- `analytics-logistics-fr.png` : évolution des files, congestion et utilisation des baies.
+- `analytics-fr.png` : distribution de santé, risques de maintenancec évolution des files, congestion et utilisation des baies ;
 
-Ces vues servent à expliquer les tendances historiques simulées et ne représentent pas encore des données industrielles persistées.
+![analytics-fr.png](docs/screenshots/analytics-fr.png)
 
 ### Laboratoire de simulation
 
@@ -181,29 +187,8 @@ La page **Simulation Lab** permet de déclencher manuellement des scénarios :
 #### Captures d'écran
 
 - `simulation-fr.png` : commandes de scénarios de maintenance et de logistique ;
-- `simulation-demo-fr.png` : mode démo actif et journal des événements ;
-- `simulation-language-fr.png` : contrôle manuel de la langue et conservation de la préférence.
 
-Chaque capture doit indiquer le scénario déclenché et le résultat observable dans l'application.
-
-## Captures d'écran du produit
-
-Les captures d'écran sont regroupées dans [`docs/screenshots/`](docs/screenshots/). Le dossier contient également les consignes de nommage et d'organisation.
-
-Pour ajouter une capture :
-
-1. lancez l'application ;
-2. placez-vous sur la section concernée ;
-3. activez le scénario utile si nécessaire ;
-4. réalisez la capture sans données sensibles ;
-5. enregistrez l'image dans `docs/screenshots/` ;
-6. ajoutez son nom et sa description dans la sous-section correspondante ci-dessus.
-
-Une capture doit toujours répondre à trois questions :
-
-- quelle section est montrée ?
-- quelle action ou information importante est visible ?
-- quelle valeur cette interface apporte-t-elle à l'opérateur ?
+![simulation-fr.png](docs/screenshots/simulation-fr.png)
 
 ## Langue et thème
 
